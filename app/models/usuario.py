@@ -1,6 +1,6 @@
 from app import db
 from datetime import datetime
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 
 class Usuario(UserMixin,db.Model):
@@ -22,6 +22,11 @@ class Usuario(UserMixin,db.Model):
     def set_password(self, password_plano):
         """Hash a la contraseña en texto plano"""
         self.password = generate_password_hash(password_plano)
+
+    def check_password(self, passwd):
+        """Verifica si la contraseña en texto plano coincide con el hash almacenado"""
+        return check_password_hash(self.password, passwd)
+
 
     def __repr__(self):
         return f'<Usuario: {self.email} | {self.rol}>'

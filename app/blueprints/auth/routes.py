@@ -17,6 +17,7 @@ def registro():
 
     if form.validate_on_submit():          # POST + validaciones OK
         nuevo_usuario = Usuario(
+            print(password=form.password.data),
             nombre = form.nombre.data,
             email  = form.email.data,
             rol    = 'cliente'
