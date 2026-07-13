@@ -1,8 +1,9 @@
 from flask import render_template, redirect, url_for, flash, request, session
 from flask_login import login_required, current_user
 from app import db
-from app.models import Producto, Categoria, Pedido, DetallePedido
+from app.models import Producto, Categoria, Pedido
 from app.blueprints.public import public_bp
+from app.models.pedido import DetallePedido
 
 
 # ── HOME ──────────────────────────────────────────────────────────
